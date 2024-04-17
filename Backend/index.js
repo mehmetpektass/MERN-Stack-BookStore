@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/books' , booksRoute)
+
 
 // app.use(cors({
 //     origin: "http://localhost:3000",
@@ -18,12 +18,14 @@ app.use('/books' , booksRoute)
 //     allowedHeaders: ['Content-Type'],
 // }))
 
+app.use(cors());
+
 app.get('/' , (request,response) =>{
     console.log();
     return response.status(260).send("Welcome to MERN Stack App");
 });
 
-
+app.use('/books' , booksRoute)
 
 mongoose
     .connect(MONGO_URL)
