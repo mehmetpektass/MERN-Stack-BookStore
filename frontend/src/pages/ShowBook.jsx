@@ -33,7 +33,7 @@ export const ShowBook = () => {
        ) : (
         <div className='flex flex-col border-2 border-2 border-sky-400 rounded-xl w-fit p-4'>
             <div className='my-4'>
-                <span className='text-2xl mr-4 text-green-400'>ID:</span>
+                <span className='text-2xl mr-4 text-green-400'>Id:</span>
                 <span className='text-xl'>{books._id}</span>
             </div>
             <div className='my-4'>
