@@ -9,10 +9,10 @@ export const CreateBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
-  const [commentTitle ,setCommentTitle] =useState("");
-  const [commentContent ,setCommentContent] =useState("");
+  const [commentTitle, setCommentTitle] = useState("");
+  const [commentContent, setCommentContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const handleSaveBook = () => {
     const data = {
@@ -27,12 +27,12 @@ export const CreateBook = () => {
       .post("http://localhost:3000/books", data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book Created Successfully' , { variant: 'success'})
+        enqueueSnackbar("Book Created Successfully", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-        enqueueSnackbar('Error, Please Check It Again! ' , { variant: 'error'})
+        enqueueSnackbar("Error, Please Check It Again! ", { variant: "error" });
         console.log(error);
       });
   };
@@ -82,7 +82,6 @@ export const CreateBook = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Comment Content</label>
           <textarea
-        
             value={commentContent}
             onChange={(e) => setCommentContent(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2  w-full h-[150px]"

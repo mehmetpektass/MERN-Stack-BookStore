@@ -1,63 +1,63 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
-import { useNavigate ,useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 export const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
-  const [commentTitle ,setCommentTitle] =useState("");
-  const [commentContent ,setCommentContent] =useState("");
+  const [commentTitle, setCommentTitle] = useState("");
+  const [commentContent, setCommentContent] = useState("");
   const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     axios
-        .get(`http://localhost:3000/books/${id}`)
-        .then((response) => {
-            setTitle(response.data.title);
-            setAuthor(response.data.author);
-            setPublishYear(response.data.publishYear);
-            setCommentTitle(response.data.commentTitle);
-            setCommentContent(response.data.commentContent);
-            console.log(response.data.title)
-            setLoading(false);
-        })
-        .catch((error) => {
-            console.log(error);
-            alert("There is an error, please check the console");
-            setLoading(false);
-        })
-  },[])
+      .get(`http://localhost:3000/books/${id}`)
+      .then((response) => {
+        setTitle(response.data.title);
+        setAuthor(response.data.author);
+        setPublishYear(response.data.publishYear);
+        setCommentTitle(response.data.commentTitle);
+        setCommentContent(response.data.commentContent);
+        console.log(response.data.title);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("There is an error, please check the console");
+        setLoading(false);
+      });
+  }, []);
 
   const handleEditBook = () => {
     if (!title || !author || !publishYear) {
-        return alert("Please fill the all inputs");
+      return alert("Please fill the all inputs");
     }
     const data = {
       title,
       author,
       publishYear,
       commentTitle,
-      commentContent
+      commentContent,
     };
     setLoading(true);
     axios
       .put(`http://localhost:3000/books/${id}`, data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book Edited Succesfully' , { variant: 'success'})
+        enqueueSnackbar("Book Edited Succesfully", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-         enqueueSnackbar('Error, Please Check It Again! ' , { variant: 'error'})
+        enqueueSnackbar("Error, Please Check It Again! ", { variant: "error" });
         console.log(error);
       });
   };
@@ -107,7 +107,6 @@ export const EditBook = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Comment Content</label>
           <textarea
-        
             value={commentContent}
             onChange={(e) => setCommentContent(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2  w-full h-[150px]"
