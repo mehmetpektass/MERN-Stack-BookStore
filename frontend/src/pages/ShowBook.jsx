@@ -31,7 +31,7 @@ export const ShowBook = () => {
        {loading ? (
         <Spinner/>
        ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
+        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[700px] p-4'>
             <div className='my-4'>
                 <span className='text-2xl mr-4 text-gray-500'>Id:</span>
                 <span className='text-xl'>{books._id}</span>
@@ -47,6 +47,14 @@ export const ShowBook = () => {
             <div className='my-4'>
                 <span className='text-2xl mr-4 text-gray-500'>Publish Year:</span>
                 <span className='text-xl'> {books.publishYear}</span>
+            </div>
+            <div className='my-4'>
+                <span className='text-2xl mr-4 text-gray-500'>Comment Title:</span>
+                <span className='text-xl'> {books.commentTitle}</span>
+            </div>
+            <div className='my-4'>
+                <span className='text-2xl mr-4 text-gray-500'>Comment Content:</span>
+                <span className='text-xl'> {books.commentContent}</span>
             </div>
             <div className='my-4'>
                 <span className='text-2xl mr-4 text-gray-500'>Create Time:</span>

@@ -34,7 +34,9 @@ router.post('/' , async (request , response) =>{
         if(
             !request.body.title ||
             !request.body.author ||
-            !request.body.publishYear
+            !request.body.publishYear ||
+            !request.body.commentTitle ||
+            !request.body.commentContent
         ){
             return response.status(400).send({
                 message: 'Send All Requireds ex: title,author,publishYear'
@@ -43,7 +45,9 @@ router.post('/' , async (request , response) =>{
         const newBook = {
             title: request.body.title,
             author: request.body.author,
-            publishYear: request.body.publishYear
+            publishYear: request.body.publishYear,
+            commentTitle: request.body.commentTitle,
+            commentContent: request.body.commentContent
         };
         const book = await Book.create(newBook);
         return response.status(201).send(book);
@@ -58,7 +62,9 @@ router.put('/:id' , async (request , response) => {
         if (
             !request.body.title ||
             !request.body.author ||
-            !request.body.publishYear
+            !request.body.publishYear ||
+            !request.body.commentTitle ||
+            !request.body.commentContent
         ) {
             return response.status(400).send({
                 message: 'Send All Requireds ex: title,author,publishYear'

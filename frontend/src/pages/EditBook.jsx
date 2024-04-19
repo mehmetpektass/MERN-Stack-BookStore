@@ -8,6 +8,8 @@ export const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [commentTitle ,setCommentTitle] =useState("");
+  const [commentContent ,setCommentContent] =useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -20,6 +22,8 @@ export const EditBook = () => {
             setTitle(response.data.title);
             setAuthor(response.data.author);
             setPublishYear(response.data.publishYear);
+            setCommentTitle(response.data.commentTitle);
+            setCommentContent(response.data.commentContent);
             console.log(response.data.title)
             setLoading(false);
         })
@@ -38,6 +42,8 @@ export const EditBook = () => {
       title,
       author,
       publishYear,
+      commentTitle,
+      commentContent
     };
     setLoading(true);
     axios
@@ -84,6 +90,24 @@ export const EditBook = () => {
             value={publishYear}
             onChange={(e) => setPublishYear(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2  w-full "
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Comment Title</label>
+          <input
+            type="text"
+            value={commentTitle}
+            onChange={(e) => setCommentTitle(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2  w-full "
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Comment Content</label>
+          <textarea
+        
+            value={commentContent}
+            onChange={(e) => setCommentContent(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2  w-full h-[150px]"
           />
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleEditBook}>

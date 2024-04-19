@@ -14,6 +14,14 @@ const bookSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
+        commentTitle: {
+            type: String,
+            required: true,
+        },
+        commentContent: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,
