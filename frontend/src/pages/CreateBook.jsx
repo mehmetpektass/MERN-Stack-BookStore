@@ -32,7 +32,7 @@ export const CreateBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        alert("There is an error, please check the console");
+        enqueueSnackbar('Error, Please Check It Again! ' , { variant: 'error'})
         console.log(error);
       });
   };
