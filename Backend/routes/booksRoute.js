@@ -34,7 +34,7 @@ router.post("/", async (request, response) => {
       !request.body.commentContent
     ) {
       return response.status(400).send({
-        message: "Send All Requireds ex: title,author,publishYear",
+        message: "Send All Requireds : title,author,publishYear",
       });
     }
     const newBook = {
