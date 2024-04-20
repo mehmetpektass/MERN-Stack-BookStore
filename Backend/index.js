@@ -13,7 +13,7 @@ app.use(cors());
 
 app.get("/", (request, response) => {
   console.log();
-  return response.status(260).send("Welcome to MERN Stack App");
+  return response.status(260).send("Welcome to MERN Stack pp");
 });
 
 app.use("/books", booksRoute);
