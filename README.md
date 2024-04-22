@@ -1,4 +1,4 @@
-# MERN STACK  Book Management System📕📗
+# MERN STACK - Book Management System📕📗
 
 ## Description
  This is a web application built with the <b> MERN stack (MongoDB, Express.js, React, Node.js) , React Icon , Axios , SnackBar </b> for managing books. It allows users to perform CRUD (Create, Read, Update, Delete) operations on books.
